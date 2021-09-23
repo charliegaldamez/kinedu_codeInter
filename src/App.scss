@@ -2,7 +2,7 @@
     &__container {
         padding-bottom: 40px;
     }
-    
+
     &__title {
         color: $white;
         font-size: 16px;
@@ -44,11 +44,30 @@
 
     &__list {
         padding: 16px;
+
+        &__loading {
+            font-size: 30px;
+            font-weight: 700;
+            text-align: center;
+            animation: loading 2s infinite;
+        }
     }
 
     &__button-container {
         max-width: 500px;
         margin: 0 auto;
         padding: 0px 16px;
+    }
+}
+
+@keyframes loading {
+    0% {
+        transform: scale(1.0);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1.0);
     }
 }
