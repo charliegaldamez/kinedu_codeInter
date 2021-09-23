@@ -9,19 +9,29 @@ import MilestonesService from "./services/MilestonesService";
 function App() {
   const [showModal, setShowModal] = useState(false);
   const [counter, setcounter] = useState(1);
-  const [storedData, setStoredData] = useState([]);
   const [area, setarea] = useState(milestoneAreas[0]);
   const [skillData, setSkillData] = useState({
     title: "Loading",
     description: "We are loading the milestones for your child",
   });
   const [milestonesList, setMilestonesList] = useState([]);
+  const [storedData, setStoredData] = useState([]);
 
   let buttonOnClick = () => {
+    if (counter <= milestoneAreas.length) {
+      storedData[counter - 1] = milestonesList;
+      setStoredData(storedData);
+    }
+
     if (counter === milestoneAreas.length) {
       console.log(storedData);
       setShowModal(true);
     } else {
+      setSkillData({
+        title: "Loading",
+        description: "We are loading the milestones for your child",
+      });
+      setMilestonesList([]);
       setcounter(counter + 1);
     }
   };
@@ -37,12 +47,13 @@ function App() {
       const { skill } = data;
       setSkillData(skill);
 
-      const milestonesReseted = skill.milestones.map(element => ({...element, master: null}));
+      const milestonesReseted = skill.milestones.map((element) => ({
+        ...element,
+        master: null,
+      }));
       setMilestonesList(milestonesReseted);
     });
   }, [area]);
-
-  useEffect(() => {}, [milestonesList]);
 
   return (
     <div className="milestones">
@@ -69,19 +80,24 @@ function App() {
           </div>
         </div>
         <div className="milestones__list">
-        {milestonesList.length === 0 && 
-          <p className="milestones__list__loading">Loading results...</p>
-        }
-        {milestonesList.length > 0 && 
-          <MilestoneList
-            itemList={milestonesList}
-            setItemList={setMilestonesList}
-          />}
-        </div>
-        <div className="milestones__button-container">
-          <Button onClick={buttonOnClick}>
-            {counter === milestoneAreas.length ? "Finish Assesment" : "Next"}
-          </Button>
+          {milestonesList.length === 0 && (
+            <p className="milestones__list__loading">Loading results...</p>
+          )}
+          {milestonesList.length > 0 && (
+            <React.Fragment>
+              <MilestoneList
+                itemList={milestonesList}
+                setItemList={setMilestonesList}
+              />
+              <div className="milestones__button-container">
+                <Button onClick={buttonOnClick}>
+                  {counter === milestoneAreas.length
+                    ? "Finish Assesment"
+                    : "Next"}
+                </Button>
+              </div>
+            </React.Fragment>
+          )}
         </div>
       </div>
     </div>

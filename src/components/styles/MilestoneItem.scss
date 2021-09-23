@@ -24,7 +24,7 @@
     }
 
     &__button {
-        width: 200px;
+        width: auto;
 
         &--status {
             display: none;
@@ -32,6 +32,10 @@
             @include mediaquery('small') {
                 display: flex;
             }
+        }
+        
+        @include mediaquery('small') {
+            width: 200px;
         }
     }
 }
