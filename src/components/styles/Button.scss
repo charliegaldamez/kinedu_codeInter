@@ -1,0 +1,37 @@
+@mixin buttonColor($textColor, $background) {
+    color: $textColor;
+    background: $background;
+    transition: 0.3s all ease-in-out;
+}
+
+@mixin hoverButton($background) {
+    &:hover {
+        background: darken($color: $background, $amount: 10%);
+    }
+}
+
+.button {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: $button_radius;
+    padding: 10px;
+    @include buttonColor($white, $green_color);
+    @include hoverButton($green_color);
+
+    span {
+        font-size: $font_size_16;
+        font-weight: 700;
+    }
+
+    &--disabled {
+        @include buttonColor($dark_grey, $disabled_color);
+        @include hoverButton($disabled_color);
+    }
+
+    &--uncompleted {
+        @include buttonColor($green_color, $disabled_color);
+        @include hoverButton($disabled_color);
+    }
+}

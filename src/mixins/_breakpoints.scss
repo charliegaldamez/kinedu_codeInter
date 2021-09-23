@@ -1,0 +1,16 @@
+$breakpoints: (
+    'small': (min-width: $small_screen_size),
+    'medium': (min-width: $medium_screen_size),
+    'large': (min-width: $large_screen_size)
+) !default;
+
+@mixin mediaquery($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media #{inspect(map-get($breakpoints, $breakpoint))} {
+            @content;
+        }
+    }
+    @else {
+        @warn "No hay soporte para esa medida, solo se tiene #{map-keys($breakpoints)}" 
+    }
+}

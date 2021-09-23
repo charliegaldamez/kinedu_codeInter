@@ -1,0 +1,56 @@
+body {
+    margin: 0px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+@import "colors";
+@import "sizes";
+
+.container {
+    max-width: $max_width_container;
+    margin: 0 auto;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+
+    &-justify {
+        &-center {
+            justify-content: center;
+        }
+    }
+
+    &-align {
+        &-center {
+            align-items: center;
+        }
+    }
+}
+
+.divider {
+    height: 1px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 600px;
+
+    &--white {
+        background: $white;
+    }
+}
+
+@import "mixins/mixins";
+
+@import "components/styles/components";
+
+@import "App";

@@ -1,0 +1,46 @@
+@mixin activePill($color) {
+    background: $white;
+    color: $color;
+    font-weight: 700;
+}
+
+.selection-pills {
+    max-width: fit-content;
+    margin: 20px 0px;
+    &__container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        border: 1px solid $white;
+        border-radius: $selection_pill_radius;
+    }
+
+    &__item {
+        // cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 25px;
+        color: $white;
+        
+        &--physical {
+            &.active {
+                @include activePill($physical_area_color);
+            }
+        }
+
+        &--social-emotional {
+            &.active {
+                @include activePill($social_emotion_area_color);
+            }
+        }
+
+        &:first-child {
+            border-radius: $selection_pill_radius 0px 0px $selection_pill_radius;
+        }
+
+        &:last-child {
+            border-radius: 0px $selection_pill_radius $selection_pill_radius 0px;
+        }
+    }
+}

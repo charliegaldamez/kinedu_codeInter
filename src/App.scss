@@ -1,0 +1,54 @@
+.milestones {
+    &__container {
+        padding-bottom: 40px;
+    }
+    
+    &__title {
+        color: $white;
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    &__areas {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 30px 16px 40px 16px;
+        transition: 0.3s background ease-in-out;
+
+        &--physical {
+            background: $physical_area_color;
+        }
+
+        &--social-emotional {
+            background: $social_emotion_area_color;
+        }
+    }
+
+    &__info {
+        text-align: center;
+        color: $white;
+        &__title{ 
+            font-size: $font_size_24;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        &__description {
+            font-size: $font_size_14;
+            font-weight: 400;
+            max-width: 800px;
+        }
+    }
+
+    &__list {
+        padding: 16px;
+    }
+
+    &__button-container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 0px 16px;
+    }
+}
